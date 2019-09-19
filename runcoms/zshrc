@@ -11,3 +11,44 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+alias vim=nvim
+export EDITOR=$(which nvim)
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#333333"
+
+SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket; export SSH_AUTH_SOCK;
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+
+# set PATH so it includes user's private go bin if it exists
+if [ -d "$HOME/go/bin" ] ; then
+    PATH="$HOME/go/bin:$PATH"
+fi
+
+# set PATH so it includes global go bin if it exists
+if [ -d "/usr/local/go/bin" ] ; then
+    PATH="/usr/local/go/bin:$PATH"
+fi
+
+
+if [ -d "/snap/bin" ] ; then
+    PATH="/snap/bin:$PATH"
+fi
+
+alias pip=pip3
+alias python=python3
+export LPASS_CLIPBOARD_COMMAND=wl-copy
+
+if [ -f "$HOME/.zprofile" ] ; then
+    source $HOME/.zprofile
+fi
